@@ -2,7 +2,7 @@ import React from 'react';
 
 export const SidebarLeft: React.FC = () => {
   return (
-    <aside className="sidebar panel-3d" aria-label="Network and System Status">
+    <aside className="sidebar sidebar-left panel-3d" aria-label="Network and System Status">
       <div>
         <div className="panel-header">NETWORK_STATUS</div>
         <div className="stat-row" style={{ fontFamily: 'var(--terminal-font)' }}><span>ENCRYPTION</span><span>AES-256</span></div>
@@ -17,7 +17,7 @@ export const SidebarLeft: React.FC = () => {
 
 export const SidebarRight: React.FC = () => {
   return (
-    <aside className="sidebar panel-3d" aria-label="Global Metrics and Engine Status">
+    <aside className="sidebar sidebar-right panel-3d" aria-label="Global Metrics and Engine Status">
       <div>
         <div className="panel-header">ENGINE_STATUS</div>
         <div className="stat-row" style={{ fontFamily: 'var(--terminal-font)' }}><span>ENGINES</span><span>DUAL_MODEL</span></div>

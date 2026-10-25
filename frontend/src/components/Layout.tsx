@@ -78,7 +78,7 @@ export const Layout: React.FC = () => {
       )}
 
       <header className="header-container">
-        <div>
+        <div className="header-brand">
           <h1 className="glitch-text" data-text="AI IMAGE DETECTOR" style={{ fontSize: 'clamp(1.1rem, 4vw, 1.8rem)' }}>AI IMAGE DETECTOR</h1>
           <p style={{ fontSize: '0.65rem', opacity: 0.6, marginTop: '3px', fontFamily: 'var(--terminal-font)' }}>V1.00 // AUTHENTICITY_VERIFICATION_ENGINE</p>
           

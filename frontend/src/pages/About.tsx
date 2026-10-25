@@ -77,23 +77,23 @@ export const AboutPage: React.FC = () => {
             fontSize: '0.85rem' 
           }}
         >
-          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
+          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
             <span style={{ color: 'var(--primary-cyan)', fontWeight: 'bold' }}>FRONTEND</span>
             <span>REACT + VITE (TYPESCRIPT)</span>
           </div>
-          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
+          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
             <span style={{ color: 'var(--primary-cyan)', fontWeight: 'bold' }}>BACKEND</span>
             <span>FASTAPI + UVICORN (PYTHON)</span>
           </div>
-          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
+          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
             <span style={{ color: 'var(--primary-cyan)', fontWeight: 'bold' }}>MODEL_FRAMEWORK</span>
             <span>PYTORCH + TORCHVISION</span>
           </div>
-          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
+          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', borderBottom: '1px solid rgba(102, 252, 241, 0.1)', paddingBottom: '6px' }}>
             <span style={{ color: 'var(--primary-cyan)', fontWeight: 'bold' }}>CLASSIFIERS</span>
-            <span>EFFICIENTNET-B0 & FORENSICNET (DUAL-ENGINE)</span>
+            <span style={{ textAlign: 'right' }}>EFFICIENTNET-B0 & FORENSICNET</span>
           </div>
-          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '6px' }}>
+          <div className="stat-row" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '6px', paddingBottom: '6px' }}>
             <span style={{ color: 'var(--primary-cyan)', fontWeight: 'bold' }}>DATABASE</span>
             <span>SQLITE3 (FORENSICS.DB PLACEHOLDER)</span>
           </div>

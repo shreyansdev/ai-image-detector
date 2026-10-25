@@ -55,7 +55,7 @@ export const HowItWorksPage: React.FC = () => {
           The classification system features a <strong>dual-engine neural architecture</strong> designed for multi-layered forensic verification. Users can select between two specialized models depending on accuracy requirements and latency constraints:
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '25px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '20px', marginBottom: '25px' }}>
           {/* EfficientNet-B0 Card */}
           <div className="panel-3d" style={{ padding: '20px', background: 'rgba(0,0,0,0.4)', border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', borderRadius: 'var(--border-radius-hologram)' }}>
             <div className="panel-header" style={{ fontSize: '0.9rem', color: 'var(--primary-cyan)', marginBottom: '8px' }}>EFFICIENTNET-B0 // PRIMARY</div>

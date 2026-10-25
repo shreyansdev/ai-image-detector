@@ -375,25 +375,20 @@ export const DetectorPage: React.FC = () => {
       <div className="grid-layout">
         <SidebarLeft />
 
-        <div>
+        <div className="detector-main">
           {/* Mode Tabs */}
           {view === 'uploading' && (
-            <div style={{ display: 'flex', gap: '15px', marginBottom: '25px' }}>
+            <div className="mode-toggle-container">
               <button 
                 onClick={() => setMode('single')}
                 disabled={isProcessing}
+                className="mode-toggle-btn"
                 style={{
-                  flex: 1,
                   background: mode === 'single' ? 'var(--primary-cyan)' : 'transparent',
                   color: mode === 'single' ? 'var(--bg-color)' : 'var(--primary-cyan)',
                   boxShadow: mode === 'single' ? 'var(--glow-cyan)' : 'none',
                   border: '1px solid var(--primary-cyan)',
-                  fontFamily: 'var(--display-font)',
-                  fontWeight: 'bold',
-                  padding: '10px 20px',
-                  textTransform: 'uppercase',
                   cursor: isProcessing ? 'not-allowed' : 'pointer',
-                  transition: 'all 0.3s ease',
                 }}
               >
                 SINGLE_SCAN
@@ -404,18 +399,13 @@ export const DetectorPage: React.FC = () => {
                   setPreview(null);
                 }}
                 disabled={isProcessing}
+                className="mode-toggle-btn"
                 style={{
-                  flex: 1,
                   background: mode === 'batch' ? 'var(--primary-cyan)' : 'transparent',
                   color: mode === 'batch' ? 'var(--bg-color)' : 'var(--primary-cyan)',
                   boxShadow: mode === 'batch' ? 'var(--glow-cyan)' : 'none',
                   border: '1px solid var(--primary-cyan)',
-                  fontFamily: 'var(--display-font)',
-                  fontWeight: 'bold',
-                  padding: '10px 20px',
-                  textTransform: 'uppercase',
                   cursor: isProcessing ? 'not-allowed' : 'pointer',
-                  transition: 'all 0.3s ease',
                 }}
               >
                 BATCH_SCAN

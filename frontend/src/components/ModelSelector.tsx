@@ -21,14 +21,7 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
       <div className="panel-header" style={{ fontSize: '0.8rem', marginBottom: '12px' }}>
         SELECT_DETECTION_ENGINE
       </div>
-      <div
-        className="model-selector-grid"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '15px',
-        }}
-      >
+      <div className="model-selector-grid">
         {models.map((m) => {
           const isSelected = selectedModel.toLowerCase() === m.id.toLowerCase();
           const isAvailable = m.available;

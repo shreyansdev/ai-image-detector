@@ -8,7 +8,7 @@ interface ScannerProps {
 }
 
 export const ScannerView: React.FC<ScannerProps> = ({ preview, logs, isBatch, batchPreviews }) => (
-  <div className="scanning-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-grid-gap)' }}>
+  <div className="scanning-grid">
     <div className="hologram-container" style={{ position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '15px' }}>
       {isBatch && batchPreviews ? (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px', width: '100%' }}>
