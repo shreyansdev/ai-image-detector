@@ -1,290 +1,284 @@
 # AI Image Detector
-A high-performance full-stack web application powered by a dual-engine PyTorch model system (**EfficientNet-B0** & **ForensicNet**) to identify and classify images as Real or AI-Generated with millisecond latency.
 
+A high-performance, production-ready full-stack web application powered by a dual-engine PyTorch model system (**EfficientNet-B0** & **ForensicNet**) to identify and classify images as Real or AI-Generated with single-digit millisecond latency.
+
+[![CI Test & Build Suite](https://github.com/shreyansdev/ai-image-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/shreyansdev/ai-image-detector/actions/workflows/ci.yml)
 ![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
-![PyTorch Version](https://img.shields.io/badge/PyTorch-2.5.1%2B-ee4c2c.svg)
+![PyTorch Version](https://img.shields.io/badge/PyTorch-2.2%2B-ee4c2c.svg)
 ![FastAPI Version](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg)
-![React Version](https://img.shields.io/badge/React-18.3%2B-20232a.svg)
-![License MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![React Version](https://img.shields.io/badge/React-19.0%2B-20232a.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+---
+
+## Interface Preview
+
+| Landing Page | Forensic Scanner |
+| :---: | :---: |
+| ![Landing Page](screenshots/01_home_page.png) | ![Detector Scanner](screenshots/02_detector_page.png) |
+
+| AI-Generated Detection Result | Real Image Verification Result |
+| :---: | :---: |
+| ![AI Result](screenshots/06_result_efficientnet_ai_generated.png) | ![Real Result](screenshots/07_result_efficientnet_real.png) |
 
 ---
 
 ## Overview
-The rise of sophisticated deep generative models (such as Midjourney, DALL-E, and Stable Diffusion) has made it increasingly difficult to distinguish between real photographs and synthetic images. This project provides a full-stack, local-first machine learning application designed to inspect, analyze, and detect AI-generated images with high confidence and latency measured in single-digit milliseconds.
 
-This application is built as an end-to-end ML serving system comprising:
-* A client-side React 19 SPA with a reconciled stark ink-and-canvas design language (`DESIGN.md`, `theme.css`, `theme.js`), interactive 3D particle background (Three.js), single & batch drag-and-drop dropzones, and real-time model switching.
-* A robust FastAPI REST backend providing single & batch inference endpoints, binary magic byte signature verification, sliding-window rate limiting, and CORS security.
-* A dual-engine PyTorch model serving pipeline supporting **EfficientNet-B0** (highest accuracy) and **ForensicNet** (custom tri-stream spatial + frequency + noise residual architecture for ultra-fast GPU inference).
+The rapid advancement of deep generative synthesis (Midjourney, DALL-E, Stable Diffusion) makes distinguishing authentic photography from synthetic imagery increasingly critical. This project provides an end-to-end, local-first forensic detection system combining:
+
+* **Dual-Engine PyTorch Model Serving:**
+  * **EfficientNet-B0**: Fine-tuned CNN for maximum classification accuracy (**97.82% Accuracy**, **0.9979 AUC-ROC**).
+  * **ForensicNet**: Custom tri-stream deep architecture fusing spatial pixel analysis, noise residual extraction (SRM filters), and frequency domain (DCT) decomposition (**94.83% Accuracy**, **~1.78 ms GPU latency**).
+* **High-Throughput Vectorized Batch Inference:** Supports up to 10 images concurrently, stacking valid tensors into a single GPU/CPU matrix operation.
+* **Pre-Trained Weights Included:** Both production models (`best_efficientnet_b0.pth` and `best_forensicnet.pth`) come pre-packaged in `backend/ml/model_weights/`, enabling instant out-of-the-box detection with zero manual weight downloads.
+* **Cyberforensic React 19 Frontend:** Stark ink-and-canvas aesthetic with neon cyber accents, real-time diagnostic terminal simulator, interactive 3D particle canvas (Three.js), and zero user-data retention.
+* **Hardened Enterprise Backend:** FastAPI REST service with binary magic-byte verification, proxy-aware sliding-window rate limiting, HSTS security headers, and immutable static asset caching.
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
+| Component | Technologies |
 | :--- | :--- |
-| **Frontend** | React 19, TypeScript, Vite 8, Reconciled Design System (`DESIGN.md`, `theme.css`, `theme.js`), Tailwind CSS v4, Three.js |
-| **Backend** | FastAPI, Uvicorn, Pydantic, Python-dotenv |
-| **Model & Inference** | PyTorch, torchvision, NumPy, PIL |
-| **Training Hardware** | Intel Core i5-11400H, NVIDIA GeForce RTX 3050 (4GB VRAM), 16GB RAM |
+| **Frontend** | React 19, TypeScript, Vite 8, Tailwind CSS v4, Three.js, Lucide Icons |
+| **Backend** | FastAPI, Uvicorn, Pydantic v2, Python-dotenv, Aiofiles |
+| **Inference & ML** | PyTorch, torchvision, NumPy, Pillow, Scikit-learn, SciPy |
+| **Deployment** | Docker (Multi-stage build, non-root user), Docker Compose, GitHub Actions |
 
 ---
 
-## Model Details
+## Model Benchmarks & Diagnostic Plots
 
-* **EfficientNet-B0**: Fine-tuned transfer learning CNN (1280 → 512 → 2 head, Dropout 0.4). Backbone unfrozen at epoch 8 for deep fine-tuning. Optimized for maximum classification accuracy.
-* **ForensicNet**: Custom tri-stream deep neural architecture combining spatial pixel analysis, noise residual extraction (SRM filters), and frequency domain (DCT) decomposition. Optimized for ultra-fast GPU throughput.
-* **Dataset**: Combined dataset of Kaggle "AI Generated Images vs Real Images" and deepfake/face-swap samples (~238,000 images total) balanced across classes (`real` and `fake`).
-* **Training Approach**: Mixed precision (AMP) training, automated worker benchmarking, and Adam optimizer with cosine/plateau learning rate schedules.
+Trained on a balanced dataset of ~238,000 real and synthetic images using mixed-precision (AMP) optimization:
 
-### Evaluation Results
-
-| Metric | EfficientNet-B0 | ForensicNet |
+| Metric | EfficientNet-B0 (Accuracy Engine) | ForensicNet (Speed Engine) |
 | :--- | :--- | :--- |
-| **Test Accuracy** | 97.82% | 94.83% |
-| **AUC-ROC** | 0.9979 | 0.9903 |
-| **Macro Precision** | 97.82% | 94.84% |
-| **Macro Recall** | 97.82% | 94.83% |
-| **Macro F1-Score** | 97.82% | 94.83% |
+| **Test Accuracy** | **97.82%** | **94.83%** |
+| **AUC-ROC** | **0.9979** | **0.9903** |
+| **Macro Precision** | **97.82%** | **94.84%** |
+| **Macro Recall** | **97.82%** | **94.83%** |
+| **Macro F1-Score** | **97.82%** | **94.83%** |
 | **Parameter Count** | 4.66M | 1.05M |
-| **Inference Speed (GPU)** | ~3.78 ms / image | ~1.78 ms / image |
-| **Inference Speed (CPU)** | ~12.24 ms / image | ~5.60 ms / image |
+| **GPU Inference Latency** | ~3.78 ms / image | ~1.78 ms / image |
+| **CPU Inference Latency** | ~12.24 ms / image | ~5.60 ms / image |
 
-### Visual Performance Diagnostics
+### Diagnostic Plots
 
-#### Confusion Matrix & ROC Curve (EfficientNet-B0)
-![Confusion Matrix](backend/ml/confusion_matrix.png)
-![ROC Curve](backend/ml/roc_curve.png)
-
-#### Confusion Matrix & ROC Curve (ForensicNet)
-![ForensicNet Confusion Matrix](backend/ml/confusion_matrix_forensicnet.png)
-![ForensicNet ROC Curve](backend/ml/roc_curve_forensicnet.png)
+| EfficientNet-B0 Diagnostics | ForensicNet Diagnostics |
+| :---: | :---: |
+| ![EfficientNet Confusion Matrix](backend/ml/confusion_matrix.png) | ![ForensicNet Confusion Matrix](backend/ml/confusion_matrix_forensicnet.png) |
+| ![EfficientNet ROC Curve](backend/ml/roc_curve.png) | ![ForensicNet ROC Curve](backend/ml/roc_curve_forensicnet.png) |
 
 ---
 
-## Project Structure
+## Quickstart Guide
 
+You can run the entire application using Docker, the all-in-one local runner, or standalone development servers.
+
+### Method 1: Docker Compose (Recommended for Production)
+
+```bash
+# Clone the repository
+git clone https://github.com/shreyansdev/ai-image-detector.git
+cd ai-image-detector
+
+# Build and start the containerized service
+docker compose up --build
 ```
-ai-image-detector/
-├── backend/
-│   ├── app/
-│   │   ├── routes/
-│   │   │   ├── __init__.py
-│   │   │   └── predict.py
-│   │   ├── services/
-│   │   │   ├── __init__.py
-│   │   │   └── inference.py
-│   │   ├── utils/
-│   │   │   ├── __init__.py
-│   │   │   └── security.py
-│   │   ├── main.py
-│   │   └── __init__.py
-│   ├── logs/
-│   ├── ml/
-│   │   ├── model_weights/
-│   │   │   └── best_efficientnet_b0.pth
-│   │   ├── clean_dataset.py
-│   │   ├── dataset.py
-│   │   ├── evaluate.py
-│   │   ├── plot_training.py
-│   │   ├── run_training_pipeline.py
-│   │   └── train.py
-│   ├── tests/
-│   │   ├── conftest.py
-│   │   └── test_api.py
-│   ├── database.py
-│   ├── main.py
-│   ├── requirements.txt
-│   ├── utils.py
-│   └── verify_integration.py
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── services/
-│   │   ├── App.tsx
-│   │   ├── Background3D.tsx
-│   │   ├── index.css
-│   │   └── main.tsx
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── vite.config.ts
-├── data/                    # Local dataset storage (gitignored)
-└── README.md
+Open [http://localhost:8000](http://localhost:8000) in your browser. The container runs with dropped privileges as a dedicated non-root `appuser`.
+
+---
+
+### Method 2: All-in-One Local Runner (`run.py`)
+
+The included [`run.py`](run.py) script automatically compiles frontend assets (if missing), validates dependencies, configures proxy flags, and launches the unified server on a single port:
+
+```bash
+# Set up Python virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run all-in-one application
+python run.py
+```
+Open [http://localhost:8000](http://localhost:8000).
+
+---
+
+### Method 3: Manual Developer Setup (Decoupled Vite + Uvicorn)
+
+#### 1. Backend Server
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+# Launch FastAPI development server with hot-reload
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
----
-
-## Getting Started
-
-### Prerequisites
-* Python 3.10+
-* Node.js & npm
-* NVIDIA GPU with CUDA drivers (Recommended but optional; fallback to CPU is automatic)
-
-### Backend Setup
-
-1. **Navigate to backend and create virtual environment**:
-   ```bash
-   cd backend
-   # Linux/Mac
-   python3 -m venv venv
-   source venv/bin/activate
-
-   # Windows
-   python -m venv venv
-   venv\Scripts\activate
-   ```
-
-2. **Install requirements**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Install correct PyTorch GPU build (NVIDIA GPU users)**:
-   If you have a CUDA-compatible GPU, reinstall the CUDA-enabled build of PyTorch for optimal performance:
-   ```bash
-   pip uninstall torch torchvision
-   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-   ```
-
-4. **Environment Configuration**:
-   Create a `.env` file in the `backend/` directory copying `backend/.env` contents:
-   ```env
-   MODEL_WEIGHTS_PATH=ml/model_weights/best_efficientnet_b0.pth
-   MAX_FILE_SIZE_MB=10
-   ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3000
-   ```
-
-5. **Run FastAPI service**:
-   ```bash
-   uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-   ```
-   The backend API will run on `http://localhost:8000`.
-
-### Frontend Setup
-
-1. **Navigate to the frontend folder and install packages**:
-   ```bash
-   cd ../frontend
-   npm install
-   ```
-
-2. **Configure Environment Variables**:
-   Verify or create a `.env` file in the `frontend/` directory:
-   ```env
-   VITE_API_URL=http://localhost:8000
-   ```
-
-3. **Run local dev server**:
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:5173` in your browser.
+#### 2. Frontend Server
+In a separate terminal:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173). The Vite frontend connects to the backend on port `8000`.
 
 ---
 
-### Model Training & Pipeline (Optional)
+## REST API Reference
 
-To download the dataset and retrain the model locally:
+Interactive OpenAPI documentation is available at `http://localhost:8000/docs`.
 
-1. Download the [Kaggle AI Generated vs Real Images Dataset](https://www.kaggle.com/datasets/salader/ai-generated-images-vs-real-images) and extract it to the `./data` directory.
-2. Run the pipeline script to train the model, save metrics, generate diagnostic plots, and compile the final evaluator:
-   ```bash
-   python backend/ml/run_training_pipeline.py --data_path ./data --unfreeze_at 8
-   ```
-
-#### Training Flags:
-* `--fresh_start`: Deletes the current training checkpoints and starts training fresh from epoch 1.
-* `--benchmark_workers`: Benchmarks data loading speeds for worker values `[0, 2, 4, 6, 8]` on your CPU and configures the optimal count.
-* `--amp`: Controls mixed precision training (enabled by default; set `--amp False` to disable).
-* `--summary_only`: Skips model training and validation entirely and prints the final evaluation summary using the existing files.
-
----
-
-## API Documentation
-
-### Interactive Swagger Docs
-When the backend is running, the interactive documentation is accessible at `http://localhost:8000/docs`.
-
-### Endpoints
-
-#### 1. Backend Health Check
-* **Route**: `/health`
-* **Method**: `GET`
-* **Response**: `200 OK`
+### 1. Health Status
+* **Endpoint:** `GET /health`
+* **Response:**
   ```json
   {
-    "status": "healthy",
+    "status": "operational",
     "model_loaded": true,
+    "models": {
+      "efficientnet": true,
+      "forensicnet": true
+    },
     "device": "cuda"
   }
   ```
 
-#### 2. Classify Image
-* **Route**: `/api/v1/predict`
-* **Method**: `POST`
-* **Request Content-Type**: `multipart/form-data`
-* **Parameters**:
-  * `image`: Binary image file (Accepted: `image/jpeg`, `image/png`, `image/webp`).
-* **Success Response**: `200 OK`
+### 2. Available Models Metadata
+* **Endpoint:** `GET /api/v1/models`
+* **Response:** Returns benchmark metrics, dynamic parameter counts, and availability flags for both engines.
+
+### 3. Single Image Classification
+* **Endpoint:** `POST /api/v1/predict`
+* **Content-Type:** `multipart/form-data`
+* **Body:**
+  * `image`: Binary image file (`.jpg`, `.jpeg`, `.png`, `.webp`, max 10MB)
+  * `model`: Optional (`efficientnet` or `forensicnet`, default `efficientnet`)
+* **Response:**
   ```json
   {
     "label": "AI Generated",
     "confidence": 0.9854,
-    "inference_time_ms": 3.71
+    "inference_time_ms": 3.71,
+    "model_used": "efficientnet",
+    "model_display_name": "EfficientNet-B0"
   }
   ```
-* **Error Responses**:
-  * `413 Payload Too Large`: File exceeds the 10MB request size limit.
-  * `415 Unsupported Media Type`: Invalid magic bytes signature or unsupported file format.
-  * `422 Unprocessable Entity`: Corrupt image binary or decoding error.
-  * `429 Too Many Requests`: Client IP exceeded the rate limit (30 requests/minute).
-  * `503 Service Unavailable`: ML model failed to initialize or load during startup.
+
+### 4. Vectorized Batch Classification
+* **Endpoint:** `POST /api/v1/predict/batch`
+* **Content-Type:** `multipart/form-data`
+* **Body:**
+  * `images`: Multiple image files (up to 10 per request)
+  * `model`: Optional (`efficientnet` or `forensicnet`)
+* **Response:** Returns an itemized list of prediction results or per-item validation errors.
 
 ---
 
 ## Security Features
 
-The backend implements several production-grade security measures:
-* **Magic Byte Signature Check**: Validates the binary header signature of uploaded files to block extension-spoofed malicious uploads.
-* **Payload Limitation**: Restricts maximum request size to 10MB at the middleware level to prevent denial of service (DoS) attacks.
-* **Sliding Window Rate Limiter**: In-memory limiter restricting clients to 30 requests per minute per IP address.
-* **CORS Restrictions**: Configurable CORS origins block cross-site execution from unauthorized web clients.
-* **Secure HTTP Headers**: Automatically appends security-critical headers (`X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `X-XSS-Protection`) to all responses.
-* **Zero Secret Exposure**: No credentials, paths, or keys are hardcoded; all configuration is managed via `.env`.
+* **Binary Magic-Byte Inspection:** Verifies raw byte headers (`FF D8 FF` for JPEG, `89 50 4E 47` for PNG, `52 49 46 46...57 45 42 50` for WEBP) to block extension spoofing attacks.
+* **Proxy-Aware Sliding Window Rate Limiting:** Enforces client IP limits through reverse proxy headers (`X-Forwarded-For`).
+* **Strict HTTP Security Headers:** Appends `Strict-Transport-Security` (HSTS), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, and `X-XSS-Protection`.
+* **Zero Persistence / Privacy by Design:** Uploaded images are preprocessed in-memory byte streams and never written to disk.
+* **Non-Root Container Execution:** Docker container runs as unprivileged user `appuser` (UID 1001).
 
 ---
 
-## Testing
+## Automated Testing
 
-Run the pytest unit tests and integration verifier scripts inside the `backend` directory:
+Run the automated test suite covering all endpoints, security verifications, rate limiting, and batch inference:
+
 ```bash
-cd backend
-# Run backend tests
-pytest -v
+pytest backend/tests/ -v
+```
 
-# Run full integration checks
-python verify_integration.py
+All 22 tests pass:
+```text
+backend/tests/test_api.py::test_health_endpoint PASSED
+backend/tests/test_api.py::test_predict_valid_jpeg PASSED
+backend/tests/test_api.py::test_predict_valid_png PASSED
+backend/tests/test_api.py::test_predict_rejects_non_image PASSED
+backend/tests/test_api.py::test_predict_rejects_oversized_file PASSED
+backend/tests/test_api.py::test_predict_rejects_corrupted_image PASSED
+backend/tests/test_api.py::test_magic_bytes_validation PASSED
+backend/tests/test_api.py::test_inference_service_output_shape PASSED
+backend/tests/test_api.py::test_get_models_endpoint PASSED
+backend/tests/test_api.py::test_predict_with_efficientnet_model PASSED
+backend/tests/test_api.py::test_predict_with_forensicnet_model PASSED
+backend/tests/test_api.py::test_predict_with_invalid_model PASSED
+backend/tests/test_api.py::test_predict_batch_valid PASSED
+backend/tests/test_api.py::test_predict_batch_with_forensicnet PASSED
+backend/tests/test_api.py::test_predict_batch_exceeds_max PASSED
+backend/tests/test_api.py::test_predict_batch_partial_success PASSED
+backend/tests/test_api.py::test_unavailable_model_returns_503 PASSED
+backend/tests/test_api.py::test_security_headers_include_hsts PASSED
+backend/tests/test_api.py::test_rate_limiter_uses_forwarded_for PASSED
+backend/tests/test_api.py::test_batched_tensor_forward_pass PASSED
+backend/tests/test_api.py::test_find_model_weights_path_env_override PASSED
+backend/tests/test_api.py::test_static_asset_cache_control_headers PASSED
+======================== 22 passed in 2.39s ========================
 ```
 
 ---
 
-## Limitations & Future Improvements
-* **Local Session State**: The frontend uses standard session-based memory for past results; no database history is currently saved.
-* **Generator Drift**: Classification accuracy is highest for the generators in the training set (Midjourney, DALL-E, Stable Diffusion) and may degrade for newer generator updates.
-* **Batch Predictions**: Image uploads are currently single-file; future updates will support folder-level batch uploads.
-* **Explainability (Grad-CAM)**: Future milestones include adding Grad-CAM heatmaps to visualize which image regions led the model to mark them as AI-generated.
+## Project Structure
+
+```text
+ai-image-detector/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                 # GitHub Actions CI workflow
+├── backend/
+│   ├── app/
+│   │   ├── routes/predict.py      # REST endpoints (single & batch inference)
+│   │   ├── services/inference.py  # PyTorch dual-engine inference service
+│   │   ├── utils/security.py      # Magic-byte validation & security helpers
+│   │   └── main.py                # FastAPI app, security middleware & asset caching
+│   ├── ml/
+│   │   ├── model_weights/         # Pre-trained weights (EfficientNet & ForensicNet)
+│   │   ├── custom_model.py        # Tri-stream ForensicNet architecture
+│   │   ├── dataset.py             # PyTorch dataset & transforms
+│   │   ├── train.py               # EfficientNet fine-tuning pipeline
+│   │   ├── train_custom.py        # ForensicNet training pipeline
+│   │   └── evaluate.py            # Model benchmarking & ROC generator
+│   ├── tests/
+│   │   ├── conftest.py            # Synthetic image test fixtures
+│   │   └── test_api.py            # 22 automated unit/integration tests
+│   ├── .env.example               # Backend environment template
+│   └── requirements.txt           # Pinned Python dependencies
+├── frontend/
+│   ├── public/                    # Favicon, SVG icons, robots, sitemap
+│   ├── src/
+│   │   ├── components/            # Scanner, Results, ModelSelector, ErrorBoundary
+│   │   ├── pages/                 # Home, Detector, HowItWorks, About, FAQ
+│   │   ├── services/api.ts        # API client with decoupled URL precedence
+│   │   ├── styles/theme.css       # Reconciled cyberforensic styling system
+│   │   ├── App.tsx                # Client-side router & navigation
+│   │   └── Background3D.tsx       # Dynamic Three.js particle canvas
+│   ├── package.json
+│   └── vite.config.ts
+├── screenshots/                   # Application demonstration previews
+├── Dockerfile                     # Multi-stage production container build
+├── docker-compose.yml             # Container orchestration config
+├── run.py                         # All-in-one local launcher
+├── start.sh                       # Linux/macOS start script
+├── start.bat                      # Windows start script
+├── requirements.txt               # Root buildpack compatibility pointer
+├── LICENSE                        # MIT License
+└── README.md
+```
 
 ---
 
 ## License
-Distributed under the MIT License. See [LICENSE](LICENSE) for more details.
 
----
-
-## Acknowledgments
-* Thanks to Kaggle and the dataset creator for compiling the balanced image dataset.
-* Thanks to the developers of PyTorch, torchvision, FastAPI, and React for the core packages powering this application.
+Distributed under the [MIT License](LICENSE).
