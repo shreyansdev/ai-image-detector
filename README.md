@@ -2,6 +2,7 @@
 
 A high-performance, production-ready full-stack web application powered by a dual-engine PyTorch model system (**EfficientNet-B0** & **ForensicNet**) to identify and classify images as Real or AI-Generated with single-digit millisecond latency.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-ai--image--detector--304.pages.dev-00f0ff?style=flat&logo=cloudflare&logoColor=white)](https://ai-image-detector-304.pages.dev)
 [![CI Test & Build Suite](https://github.com/shreyansdev/ai-image-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/shreyansdev/ai-image-detector/actions/workflows/ci.yml)
 ![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
 ![PyTorch Version](https://img.shields.io/badge/PyTorch-2.2%2B-ee4c2c.svg)
