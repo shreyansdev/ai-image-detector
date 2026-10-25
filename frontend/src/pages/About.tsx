@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 export const AboutPage: React.FC = () => {
   return (
-    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
+    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px', maxWidth: '100%', overflowX: 'hidden' }}>
       <Helmet>
         <title>About the Platform — Project Specifications & Tech Stack</title>
         <meta name="description" content="Discover the details of the AI Image Detector platform. Review our React, FastAPI, and PyTorch tech stack, security protocols, and dataset credits." />
@@ -29,7 +29,7 @@ export const AboutPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-results)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -45,7 +45,7 @@ export const AboutPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-dense)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -61,7 +61,7 @@ export const AboutPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-dense)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -106,7 +106,7 @@ export const AboutPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-dense)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -114,27 +114,27 @@ export const AboutPage: React.FC = () => {
         <p style={{ lineHeight: '1.6', fontSize: '0.9rem', marginBottom: '20px', color: 'var(--text-grey)', fontFamily: 'var(--terminal-font)' }}>
           The underlying classifier core has been trained and optimized utilizing two main balanced dataset categories from Kaggle:
         </p>
-        <ul style={{ listStyleType: 'none', padding: 0, fontFamily: 'var(--terminal-font)', fontSize: '0.85rem', lineHeight: '2' }}>
-          <li>
-            <span style={{ color: 'var(--primary-cyan)' }}>[+]</span> 
+        <ul style={{ listStyleType: 'none', padding: 0, fontFamily: 'var(--terminal-font)', fontSize: '0.85rem' }}>
+          <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '10px' }}>
+            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span> 
             <a 
-              href="https://www.kaggle.com/datasets/ahmedhamada0/ai-generated-images-vs-real-images" 
+              href="https://www.kaggle.com/datasets/tristanzhang32/ai-generated-images-vs-real-images" 
               target="_blank" 
               rel="noopener noreferrer" 
-              style={{ color: 'var(--primary-cyan)', marginLeft: '5px', textDecoration: 'none' }}
+              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-word', lineHeight: 1.5 }}
               onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
               onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
             >
-              Kaggle: AI-Generated vs Real Images Dataset (Ahmed Hamada)
+              Kaggle: AI-Generated vs Real Images Dataset (Tristan Zhang)
             </a>
           </li>
-          <li>
-            <span style={{ color: 'var(--primary-cyan)' }}>[+]</span> 
+          <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '10px' }}>
+            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span> 
             <a 
               href="https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images" 
               target="_blank" 
               rel="noopener noreferrer" 
-              style={{ color: 'var(--primary-cyan)', marginLeft: '5px', textDecoration: 'none' }}
+              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-word', lineHeight: 1.5 }}
               onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
               onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
             >
@@ -150,7 +150,7 @@ export const AboutPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-dense)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -158,30 +158,66 @@ export const AboutPage: React.FC = () => {
         <p style={{ lineHeight: '1.6', fontSize: '0.9rem', marginBottom: '20px', color: 'var(--text-grey)', fontFamily: 'var(--terminal-font)' }}>
           To view source files or establish contact coordinates, follow these nodes:
         </p>
-        <ul style={{ listStyleType: 'none', padding: 0, fontFamily: 'var(--terminal-font)', fontSize: '0.85rem', lineHeight: '2' }}>
-          <li>
-            <span style={{ color: 'var(--primary-cyan)' }}>[+]</span> DEVELOPER: <strong>[YOUR_NAME]</strong>
+        <ul style={{ listStyleType: 'none', padding: 0, fontFamily: 'var(--terminal-font)', fontSize: '0.85rem' }}>
+          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
+            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
+            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>DEVELOPER:</span>
+            <strong style={{ color: 'var(--text-white)' }}>Shreyans Jain</strong>
           </li>
-          <li>
-            <span style={{ color: 'var(--primary-cyan)' }}>[+]</span> GITHUB: 
+          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
+            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
+            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>GITHUB:</span>
             <a 
-              href="[YOUR_GITHUB_URL]" 
-              style={{ color: 'var(--primary-cyan)', marginLeft: '5px', textDecoration: 'none' }}
+              href="https://github.com/shreyansdev" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
               onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
               onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
             >
-              [YOUR_GITHUB_URL]
+              https://github.com/shreyansdev
             </a>
           </li>
-          <li>
-            <span style={{ color: 'var(--primary-cyan)' }}>[+]</span> PORTFOLIO: 
+          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
+            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
+            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>REPOSITORY:</span>
             <a 
-              href="[YOUR_PORTFOLIO_URL]" 
-              style={{ color: 'var(--primary-cyan)', marginLeft: '5px', textDecoration: 'none' }}
+              href="https://github.com/shreyansdev/ai-image-detector" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
               onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
               onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
             >
-              [YOUR_PORTFOLIO_URL]
+              https://github.com/shreyansdev/ai-image-detector
+            </a>
+          </li>
+          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
+            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
+            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>LINKEDIN:</span>
+            <a 
+              href="https://linkedin.com/in/shreyansdev" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
+              onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
+              onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
+            >
+              https://linkedin.com/in/shreyansdev
+            </a>
+          </li>
+          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
+            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
+            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>X_TWITTER:</span>
+            <a 
+              href="https://x.com/shreyansdev" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
+              onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
+              onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
+            >
+              https://x.com/shreyansdev
             </a>
           </li>
         </ul>

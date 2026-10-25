@@ -50,7 +50,10 @@ The rapid advancement of deep generative synthesis (Midjourney, DALL-E, Stable D
 
 ## Model Benchmarks & Diagnostic Plots
 
-Trained on a balanced dataset of ~238,000 real and synthetic images using mixed-precision (AMP) optimization:
+Trained on a balanced dataset of ~238,000 real and synthetic images using mixed-precision (AMP) optimization across two primary Kaggle corpora:
+* [Kaggle: AI-Generated vs Real Images Dataset (Tristan Zhang)](https://www.kaggle.com/datasets/tristanzhang32/ai-generated-images-vs-real-images)
+* [Kaggle: Deepfake and Real Images Dataset (Manjil Karki)](https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images)
+
 
 | Metric | EfficientNet-B0 (Accuracy Engine) | ForensicNet (Speed Engine) |
 | :--- | :--- | :--- |
@@ -279,6 +282,17 @@ ai-image-detector/
 
 ---
 
+## Author & Communication Links
+
+* **Developer:** [Shreyans Jain](https://github.com/shreyansdev)
+* **GitHub:** [@shreyansdev](https://github.com/shreyansdev)
+* **LinkedIn:** [linkedin.com/in/shreyansdev](https://linkedin.com/in/shreyansdev)
+* **X / Twitter:** [@shreyansdev](https://x.com/shreyansdev)
+* **Repository:** [github.com/shreyansdev/ai-image-detector](https://github.com/shreyansdev/ai-image-detector)
+
+---
+
 ## License
 
 Distributed under the [MIT License](LICENSE).
+
