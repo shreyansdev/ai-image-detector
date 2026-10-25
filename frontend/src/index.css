@@ -29,8 +29,6 @@ body {
   background-color: var(--bg-color);
   color: var(--text-grey);
   font-family: var(--terminal-font);
-  overflow-x: hidden;
-  overflow-y: auto;
   perspective: 2000px;
   -webkit-font-smoothing: antialiased;
 }
@@ -453,7 +451,7 @@ html::after {
 }
 
 /* Prevent horizontal scroll */
-html, body {
+html {
   max-width: 100%;
   overflow-x: hidden;
 }

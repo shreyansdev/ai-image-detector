@@ -72,7 +72,7 @@ export const FAQPage: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px', maxWidth: '100%', overflowX: 'hidden' }}>
+    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
       <Helmet>
         <title>Frequently Asked Queries — AI Image Classifier FAQ</title>
         <meta name="description" content="Get answers to common queries about image formats, detection accuracy, zero data retention policies, supported generators, and API integrations." />

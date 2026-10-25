@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 export const HowItWorksPage: React.FC = () => {
   return (
-    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px', maxWidth: '100%', overflowX: 'hidden' }}>
+    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
       <Helmet>
         <title>System Architecture — How AI Image Detection Works</title>
         <meta name="description" content="Learn about the EfficientNet-B0 neural model and transfer learning pipeline used to classify real vs AI images. Review datasets, preprocessing, and metrics." />

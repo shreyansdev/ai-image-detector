@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 export const AboutPage: React.FC = () => {
   return (
-    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px', maxWidth: '100%', overflowX: 'hidden' }}>
+    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
       <Helmet>
         <title>About the Platform — Project Specifications & Tech Stack</title>
         <meta name="description" content="Discover the details of the AI Image Detector platform. Review our React, FastAPI, and PyTorch tech stack, security protocols, and dataset credits." />
