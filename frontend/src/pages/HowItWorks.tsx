@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 export const HowItWorksPage: React.FC = () => {
   return (
-    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
+    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px', maxWidth: '100%', overflowX: 'hidden' }}>
       <Helmet>
         <title>System Architecture — How AI Image Detection Works</title>
         <meta name="description" content="Learn about the EfficientNet-B0 neural model and transfer learning pipeline used to classify real vs AI images. Review datasets, preprocessing, and metrics." />
@@ -29,7 +29,7 @@ export const HowItWorksPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-results)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -40,13 +40,12 @@ export const HowItWorksPage: React.FC = () => {
       </section>
 
       {/* 2. THE MODEL PANEL */}
-      {/* 2. THE MODEL PANEL */}
       <section 
         className="panel-3d" 
         style={{ 
           background: 'var(--panel-bg-dense)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -86,7 +85,7 @@ export const HowItWorksPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-dense)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -146,14 +145,28 @@ export const HowItWorksPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-dense)', 
           border: 'var(--border-width-thin) var(--border-style) var(--accent-red-glow)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
-        <div className="panel-header" style={{ color: 'var(--accent-red-glow)', borderBottomColor: 'var(--accent-red-glow)' }}>
-          SYSTEM_CONSTRAINTS_AND_KNOWN_LIMITATIONS
+        <div 
+          className="panel-header" 
+          style={{ 
+            color: 'var(--accent-red-glow)', 
+            borderBottomColor: 'var(--accent-red-glow)',
+            fontSize: 'clamp(0.75rem, 3.5vw, 0.95rem)',
+            wordBreak: 'break-word',
+            overflowWrap: 'anywhere',
+            lineHeight: 1.4
+          }}
+        >
+          {"SYSTEM_CONSTRAINTS_AND_KNOWN_LIMITATIONS".split('_').map((part, i, arr) => (
+            <React.Fragment key={i}>
+              {part}{i < arr.length - 1 ? '_\u200B' : ''}
+            </React.Fragment>
+          ))}
         </div>
-        <p style={{ lineHeight: '1.6', fontSize: '0.9rem', color: 'var(--text-grey)', fontFamily: 'var(--terminal-font)' }}>
+        <p style={{ lineHeight: '1.6', fontSize: '0.9rem', color: 'var(--text-grey)', fontFamily: 'var(--terminal-font)', wordBreak: 'break-word' }}>
           The Neural Forensic Engine is subject to specific physical limitations. The model may exhibit reduced reliability on heavily airbrushed, retouched, or professionally color-graded authentic photography, as smoothing passes mimic GAN blurring filters. Additionally, prediction accuracy is heavily dependent on the generative model used, and images generated from architectures not represented in the training corpus (e.g., highly custom model checkpoints or newer version releases) may result in confidence drift.
         </p>
       </section>

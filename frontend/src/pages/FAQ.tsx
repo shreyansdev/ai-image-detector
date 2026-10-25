@@ -52,7 +52,7 @@ export const FAQPage: React.FC = () => {
       question: "IS_THIS_FORENSIC_TOOL_FREE_TO_USE?",
       answer: (
         <>
-          <strong>[YOUR_LICENSING_ANSWER_HERE]</strong>. EXPLAIN WHETHER THIS ENGINE RUNS AS OPEN-SOURCE UTILITY, A LOCAL-ONLY UTILITY, OR AN ENTERPRISE-BOUND CORE FOR END USERS.
+          YES. THIS ENGINE IS FULLY OPEN-SOURCE AND RELEASED UNDER THE <strong>MIT LICENSE</strong>. YOU ARE FREE TO RUN, AUDIT, AND INTEGRATE THIS UTILITY FOR LOCAL, EDUCATIONAL, AND COMMERCIAL APPLICATIONS AS DETAILED IN THE PROJECT LICENSE SPECIFICATION.
         </>
       )
     },
@@ -72,7 +72,7 @@ export const FAQPage: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
+    <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px', maxWidth: '100%', overflowX: 'hidden' }}>
       <Helmet>
         <title>Frequently Asked Queries — AI Image Classifier FAQ</title>
         <meta name="description" content="Get answers to common queries about image formats, detection accuracy, zero data retention policies, supported generators, and API integrations." />
@@ -98,7 +98,7 @@ export const FAQPage: React.FC = () => {
         style={{ 
           background: 'var(--panel-bg-results)', 
           border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)', 
-          padding: '30px', 
+          padding: 'clamp(16px, 4vw, 30px)', 
           borderRadius: 'var(--border-radius-panel)' 
         }}
       >
@@ -120,7 +120,8 @@ export const FAQPage: React.FC = () => {
                 border: 'var(--border-width-thin) var(--border-style) var(--border-cyan-dim)',
                 borderRadius: 'var(--border-radius-hologram)',
                 background: 'var(--panel-bg-dense)',
-                transition: 'all 0.15s ease'
+                transition: 'all 0.15s ease',
+                overflow: 'hidden'
               }}
             >
               {/* Question Click Bar */}
@@ -132,19 +133,43 @@ export const FAQPage: React.FC = () => {
                   border: 'none',
                   outline: 'none',
                   background: 'transparent',
-                  padding: '18px 20px',
+                  padding: '14px 16px',
                   display: 'flex',
                   justifyContent: 'space-between',
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
+                  gap: '12px',
                   cursor: 'pointer',
-                  color: isOpen ? 'var(--primary-cyan)' : 'var(--text-grey)'
+                  color: isOpen ? 'var(--primary-cyan)' : 'var(--text-grey)',
+                  boxSizing: 'border-box'
                 }}
               >
-                <div style={{ display: 'flex', gap: '15px', fontFamily: 'var(--display-font)', fontSize: '0.85rem', letterSpacing: '1px' }}>
-                  <span style={{ color: 'var(--secondary-cyan)' }}>{item.id.split('_')[0]}</span>
-                  <span>{item.question}</span>
+                <div style={{ 
+                  display: 'flex', 
+                  gap: '10px', 
+                  alignItems: 'flex-start', 
+                  flex: 1, 
+                  minWidth: 0, 
+                  fontFamily: 'var(--display-font)', 
+                  fontSize: 'clamp(0.75rem, 3vw, 0.85rem)', 
+                  letterSpacing: '1px' 
+                }}>
+                  <span style={{ color: 'var(--secondary-cyan)', flexShrink: 0 }}>{item.id.split('_')[0]}</span>
+                  <span style={{ wordBreak: 'break-word', overflowWrap: 'anywhere', lineHeight: 1.4 }}>
+                    {item.question.split('_').map((part, i, arr) => (
+                      <React.Fragment key={i}>
+                        {part}{i < arr.length - 1 ? '_\u200B' : ''}
+                      </React.Fragment>
+                    ))}
+                  </span>
                 </div>
-                <div style={{ fontFamily: 'var(--terminal-font)', fontSize: '0.9rem', color: 'var(--primary-cyan)' }}>
+                <div style={{ 
+                  fontFamily: 'var(--terminal-font)', 
+                  fontSize: '0.9rem', 
+                  color: 'var(--primary-cyan)', 
+                  flexShrink: 0, 
+                  marginTop: '1px',
+                  marginLeft: '8px' 
+                }}>
                   {isOpen ? '[-]' : '[+]'}
                 </div>
               </button>
@@ -153,17 +178,17 @@ export const FAQPage: React.FC = () => {
               {isOpen && (
                 <div 
                   style={{ 
-                    padding: '0 20px 20px 20px', 
+                    padding: '0 clamp(12px, 3vw, 20px) 16px clamp(12px, 3vw, 20px)', 
                     fontFamily: 'var(--terminal-font)', 
                     fontSize: '0.85rem', 
                     lineHeight: '1.6',
                     color: 'var(--text-grey)',
-                    borderLeft: '4px solid var(--secondary-cyan)',
-                    marginLeft: '20px',
-                    marginRight: '20px',
-                    marginBottom: '20px',
+                    borderLeft: '3px solid var(--secondary-cyan)',
+                    margin: '0 clamp(12px, 3vw, 20px) 16px clamp(12px, 3vw, 20px)',
                     opacity: 0.9,
-                    animation: 'none' // Snappy and instant display
+                    wordBreak: 'break-word',
+                    overflowWrap: 'anywhere',
+                    animation: 'none'
                   }}
                 >
                   {item.answer}

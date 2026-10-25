@@ -358,6 +358,8 @@ html::after {
   color: var(--primary-cyan);
   font-weight: bold;
   font-family: var(--display-font);
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .stat-row {
