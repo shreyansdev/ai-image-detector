@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ai-image-detector-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: 'http://localhost:5173,http://localhost:3000,https://ai-image-detector-304.pages.dev'
+      - key: MAX_FILE_SIZE_MB
+        value: '10'

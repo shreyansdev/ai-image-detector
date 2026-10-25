@@ -66,6 +66,7 @@ dist/
 frontend/dist/
 dist-ssr/
 .vite/
+.wrangler/
 
 # IDE & OS
 .DS_Store
