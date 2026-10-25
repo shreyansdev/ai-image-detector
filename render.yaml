@@ -8,6 +8,8 @@ services:
     healthCheckPath: /health
     envVars:
       - key: ALLOWED_ORIGINS
-        value: 'http://localhost:5173,http://localhost:3000,https://ai-image-detector-304.pages.dev'
+        value: 'http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,https://ai-image-detector-304.pages.dev'
+      - key: ALLOWED_ORIGIN_REGEX
+        value: '^https:\/\/([a-zA-Z0-9-_]+\.)*pages\.dev$'
       - key: MAX_FILE_SIZE_MB
         value: '10'

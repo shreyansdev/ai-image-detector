@@ -25,13 +25,21 @@ class HealthResponse(BaseModel):
 
 
 # --- Strict CORS Configuration ---
-ALLOWED_ORIGINS_RAW = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000")
+ALLOWED_ORIGINS_RAW = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173"
+)
 ALLOWED_ORIGINS = [
     origin.strip() for origin in ALLOWED_ORIGINS_RAW.split(",")
     if origin.strip() and origin.strip() != "*"
 ]
 if not ALLOWED_ORIGINS:
-    ALLOWED_ORIGINS = ["http://localhost:3000"]
+    ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:5173"]
+
+ALLOWED_ORIGIN_REGEX = os.getenv(
+    "ALLOWED_ORIGIN_REGEX",
+    r"^https:\/\/([a-zA-Z0-9-_]+\.)*pages\.dev$"
+)
 
 
 # --- Structured Logging & Rotating File Handler ---
@@ -77,6 +85,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex=ALLOWED_ORIGIN_REGEX if ALLOWED_ORIGIN_REGEX else None,
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],

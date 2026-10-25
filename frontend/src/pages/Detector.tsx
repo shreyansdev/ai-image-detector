@@ -32,23 +32,61 @@ export const DetectorPage: React.FC = () => {
   const [warningMessage, setWarningMessage] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+    let pollInterval: ReturnType<typeof setInterval> | null = null;
+
+    const startPolling = () => {
+      if (pollInterval) return;
+      pollInterval = setInterval(async () => {
+        try {
+          const health = await checkHealth(8000);
+          if (!isMounted) return;
+          if (health.model_loaded) {
+            setModelLoaded(true);
+            if (pollInterval) {
+              clearInterval(pollInterval);
+              pollInterval = null;
+            }
+            getModels().then(m => {
+              if (isMounted) setModels(m);
+            }).catch(() => {});
+          }
+        } catch {
+          // Still connecting or booting
+        }
+      }, 3500);
+    };
+
     // Health check call on mount
-    checkHealth()
+    checkHealth(8000)
       .then((health) => {
+        if (!isMounted) return;
         setModelLoaded(health.model_loaded);
+        if (!health.model_loaded) {
+          startPolling();
+        }
       })
       .catch(() => {
+        if (!isMounted) return;
         setModelLoaded(false);
+        startPolling();
       });
 
     // Dynamically fetch model metadata on page load
     getModels()
       .then((modelsData) => {
-        setModels(modelsData);
+        if (isMounted) setModels(modelsData);
       })
       .catch((err) => {
         console.error('Failed to load model metadata:', err);
       });
+
+    return () => {
+      isMounted = false;
+      if (pollInterval) {
+        clearInterval(pollInterval);
+      }
+    };
   }, []);
 
   useEffect(() => {

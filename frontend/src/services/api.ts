@@ -250,11 +250,11 @@ export async function analyzeBatch(files: File[], model: string = "efficientnet"
 /**
  * Queries the health status of the backend API service.
  */
-export async function checkHealth(): Promise<HealthStatus> {
+export async function checkHealth(timeoutMs: number = 10000): Promise<HealthStatus> {
   try {
     const response = await fetchWithTimeout(`${BASE_URL}/health`, {
       method: "GET",
-    });
+    }, timeoutMs);
 
     if (!response.ok) {
       throw new ApiError(`Health check failed with status ${response.status}`, response.status);
