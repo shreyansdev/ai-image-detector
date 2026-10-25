@@ -283,16 +283,6 @@ ai-image-detector/
 
 ---
 
-## Author & Communication Links
-
-* **Developer:** [Shreyans Jain](https://github.com/shreyansdev)
-* **GitHub:** [@shreyansdev](https://github.com/shreyansdev)
-* **LinkedIn:** [linkedin.com/in/shreyansdev](https://linkedin.com/in/shreyansdev)
-* **X / Twitter:** [@shreyansdev](https://x.com/shreyansdev)
-* **Repository:** [github.com/shreyansdev/ai-image-detector](https://github.com/shreyansdev/ai-image-detector)
-
----
-
 ## License
 
 Distributed under the [MIT License](LICENSE).
