@@ -1,0 +1,15 @@
+{
+  "short_name": "AI Detector",
+  "name": "AI Image Detector | Authenticity Engine",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0b0c10",
+  "background_color": "#0b0c10"
+}

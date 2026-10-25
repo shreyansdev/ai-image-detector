@@ -1,0 +1,74 @@
+# Python & Virtualenv
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Datasets (Strictly excluded)
+data/
+merged_dataset/
+backend/ml/data/
+
+# Model Weights (Include production weights, ignore other checkpoints)
+*.pt
+*.onnx
+*.ckpt
+backend/ml/model_weights/*.pth
+!backend/ml/model_weights/best_efficientnet_b0.pth
+!backend/ml/model_weights/best_forensicnet.pth
+!backend/ml/model_weights/.gitkeep
+
+# Excluded Documentation & Internal Notes
+docs/
+docs.zip
+architecture.md
+DESIGN.md
+GEMINI.md
+memory.md
+prd.md
+rules.md
+
+# Agent Skills & Locks
+.agents/
+skills-lock.json
+
+# Scratch & Packaging Utility Scripts
+package_project.py
+puppeteerConfig.json
+test.mmd
+
+# Environment files & Secrets
+.env
+.env.local
+.env.*.local
+*.env
+!*.env.example
+kaggle.json
+
+# Database & Logs
+*.db
+*.log
+logs/
+
+# Archives & Large Bundles
+*.zip
+*.tar.gz
+
+# Node / Frontend builds
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+dist-ssr/
+.vite/
+
+# IDE & OS
+.DS_Store
+.vscode/
+.idea/
+.gemini/

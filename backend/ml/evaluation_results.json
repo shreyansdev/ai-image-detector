@@ -1,0 +1,28 @@
+{
+    "model_architecture": "efficientnet_b0",
+    "weights_file": "best_efficientnet_b0.pth",
+    "overall_accuracy": 0.9782,
+    "auc_roc_score": 0.9979,
+    "total_parameters": 4664446,
+    "macro_metrics": {
+        "precision": 0.9782,
+        "recall": 0.9782,
+        "f1_score": 0.9782
+    },
+    "per_class_metrics": {
+        "AI Generated": {
+            "precision": 0.9779,
+            "recall": 0.9782,
+            "f1_score": 0.9781
+        },
+        "Real": {
+            "precision": 0.9784,
+            "recall": 0.9782,
+            "f1_score": 0.9783
+        }
+    },
+    "inference_speed_ms": {
+        "cpu_per_image": 12.24,
+        "gpu_per_image": 3.78
+    }
+}

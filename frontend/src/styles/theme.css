@@ -1,0 +1,237 @@
+/*
+=============================================================================
+NEURAL FORENSIC ENGINE - DESIGN SYSTEM & VISUAL STYLE GUIDE
+Authoritative single source of truth reconciled with DESIGN.md
+=============================================================================
+
+1. DESIGN PHILOSOPHY
+   A developer-platform aesthetic combining stark black-and-ink surfaces with
+   a multi-color mesh gradient (cyan / blue / magenta / amber) decorative system,
+   paired with custom geometric sans for headlines and monospaced face for technical labels.
+
+2. COLOR SCHEMES (From DESIGN.md)
+   - Primary Ink: #171717
+   - On Primary: #ffffff
+   - Ink: #171717
+   - Body: #4d4d4d
+   - Mute: #888888
+   - Hairline: #ebebeb
+   - Hairline Strong: #a1a1a1
+   - Canvas: #ffffff
+   - Canvas Soft: #fafafa
+   - Canvas Soft 2: #f5f5f5
+   - Cyan Accent: #50e3c2
+   - Cyan Deep: #29bc9b
+   - Cyan Soft: #aaffec
+   - Error: #ee0000
+   - Error Deep: #c50000
+   - Error Soft: #f7d4d6
+   - Warning: #f5a623
+   - Warning Soft: #ffefcf
+   - Warning Deep: #ab570a
+   - Link / Success: #0070f3
+   - Violet: #7928ca
+   - Highlight Pink: #ff0080
+   - Selection: BG #171717, FG #f2f2f2
+
+3. TYPOGRAPHY RULES
+   - Core Display Headers: Geist, Inter, Orbitron, system-ui, -apple-system, sans-serif
+   - Status & Technical Labels: ALL_CAPS_WITH_UNDERSCORES using Geist Mono, JetBrains Mono, monospace
+   - Body & Code: 400 weight for body, 500 for buttons, 600 ceiling for display headers
+
+4. BORDERS, RADII & SHADOWS
+   - Border Radius: none (0px), xs (4px), sm (6px), md (8px), lg (12px), xl (16px), pill-sm (64px), pill (100px), full (9999px)
+   - Stacked Shadows: Level 0 through Level 5 layered subtle drop & float stack shadows
+
+=============================================================================
+*/
+
+@theme {
+  /* DESIGN.md Color Tokens */
+  --color-primary: #171717;
+  --color-on-primary: #ffffff;
+  --color-ink: #171717;
+  --color-body: #4d4d4d;
+  --color-mute: #888888;
+  --color-hairline: #ebebeb;
+  --color-hairline-strong: #a1a1a1;
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #fafafa;
+  --color-canvas-soft-2: #f5f5f5;
+
+  /* Accent & Semantic Colors */
+  --color-link: #0070f3;
+  --color-link-deep: #0761d1;
+  --color-link-bg-soft: #d3e5ff;
+  --color-success: #0070f3;
+  --color-error: #ee0000;
+  --color-error-soft: #f7d4d6;
+  --color-error-deep: #c50000;
+  --color-warning: #f5a623;
+  --color-warning-soft: #ffefcf;
+  --color-warning-deep: #ab570a;
+  
+  --color-violet: #7928ca;
+  --color-violet-soft: #d8ccf1;
+  --color-violet-deep: #4c2889;
+  --color-cyan: #50e3c2;
+  --color-cyan-soft: #aaffec;
+  --color-cyan-deep: #29bc9b;
+  --color-highlight-pink: #ff0080;
+  --color-highlight-magenta: #eb367f;
+
+  /* Brand Gradients */
+  --color-gradient-develop-start: #007cf0;
+  --color-gradient-develop-end: #00dfd8;
+  --color-gradient-preview-start: #7928ca;
+  --color-gradient-preview-end: #ff0080;
+  --color-gradient-ship-start: #ff4d4d;
+  --color-gradient-ship-end: #f9cb28;
+
+  /* Legacy & Cyberforensic Theme Compatibility Variables */
+  --color-bg-color: #0b0c10;
+  --color-primary-cyan: #50e3c2;
+  --color-secondary-cyan: #29bc9b;
+  --color-text-grey: #c5c6c7;
+  --color-text-white: #ffffff;
+  
+  --color-accent-red: #ee0000;
+  --color-accent-red-glow: #ff0080;
+  --color-accent-green: #50e3c2;
+  --color-accent-green-glow: #aaffec;
+  --color-warning-yellow: #f5a623;
+  
+  --color-scanline-color: rgba(80, 227, 194, 0.05);
+  --color-panel-bg: rgba(11, 12, 16, 0.75);
+  --color-panel-bg-dense: rgba(11, 12, 16, 0.85);
+  --color-panel-bg-logs: #000000;
+  --color-panel-bg-results: rgba(0, 0, 0, 0.88);
+  --color-dropzone-bg: rgba(80, 227, 194, 0.02);
+  --color-hologram-bg: rgba(80, 227, 194, 0.05);
+  
+  --color-banner-warning-bg: rgba(245, 166, 35, 0.15);
+  --color-banner-error-bg: rgba(238, 0, 0, 0.15);
+  --color-banner-error-border: #ee0000;
+  
+  --color-protocol-card-bg: rgba(255, 255, 255, 0.02);
+  --color-protocol-card-bg-hover: rgba(80, 227, 194, 0.05);
+  --color-protocol-card-border: rgba(80, 227, 194, 0.15);
+  --color-protocol-card-border-hover: #50e3c2;
+  
+  /* Fonts */
+  --font-display: Geist, Inter, Orbitron, system-ui, -apple-system, sans-serif;
+  --font-terminal: 'Geist Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --font-code: 'Geist Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  /* Spacing Scale (DESIGN.md) */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 48px;
+  --spacing-4xl: 64px;
+  --spacing-5xl: 96px;
+  --spacing-6xl: 128px;
+  --spacing-section: 192px;
+
+  /* Legacy Container Spacing */
+  --spacing-container: clamp(16px, 3vw, 40px);
+  --spacing-grid-gap: clamp(20px, 3vw, 40px);
+  --spacing-sidebar-padding: 24px;
+  --spacing-upload-padding: 80px 24px;
+  --spacing-log-padding: 24px;
+  --spacing-results-padding: clamp(24px, 5%, 40px);
+  --spacing-hologram-padding: 12px;
+  --spacing-header-pb: 20px;
+  --spacing-header-mb: 32px;
+  --spacing-footer-mt: 48px;
+  --spacing-footer-pt: 24px;
+
+  /* Border Radii Scale (DESIGN.md) */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill-sm: 64px;
+  --radius-pill: 100px;
+  --radius-full: 9999px;
+
+  --radius-panel: 8px;
+  --radius-hologram: 4px;
+  --radius-image: 2px;
+  --radius-banner: 6px;
+
+  /* Elevation & Shadows (DESIGN.md Stacked Shadows) */
+  --shadow-level-0: none;
+  --shadow-level-1: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --shadow-level-2: 0px 1px 1px rgba(0, 0, 0, 0.05), 0px 2px 2px rgba(0, 0, 0, 0.1);
+  --shadow-level-3: 0px 2px 2px rgba(0, 0, 0, 0.1), 0px 8px 8px -8px rgba(0, 0, 0, 0.1);
+  --shadow-level-4: 0px 2px 2px rgba(0, 0, 0, 0.1), 0px 8px 16px -4px rgba(0, 0, 0, 0.1);
+  --shadow-level-5: 0px 1px 1px rgba(0, 0, 0, 0.05), 0px 8px 16px -4px rgba(0, 0, 0, 0.1), 0px 24px 32px -8px rgba(0, 0, 0, 0.15);
+
+  --shadow-glow-cyan: 0 0 15px var(--color-primary-cyan);
+  --shadow-glow-cyan-strong: 0 0 30px rgba(80, 227, 194, 0.25);
+}
+
+:root {
+  /* Primary DESIGN.md CSS Variables */
+  --color-primary: var(--color-primary);
+  --color-ink: var(--color-ink);
+  --color-body: var(--color-body);
+  --color-mute: var(--color-mute);
+  --color-hairline: var(--color-hairline);
+  --color-canvas: var(--color-canvas);
+  --color-canvas-soft: var(--color-canvas-soft);
+
+  --bg-color: var(--color-bg-color);
+  --primary-cyan: var(--color-primary-cyan);
+  --secondary-cyan: var(--color-secondary-cyan);
+  --text-grey: var(--color-text-grey);
+  --text-white: var(--color-text-white);
+  --accent-red: var(--color-accent-red);
+  --accent-red-glow: var(--color-accent-red-glow);
+  --accent-green: var(--color-accent-green);
+  --accent-green-glow: var(--color-accent-green-glow);
+  --warning-yellow: var(--color-warning-yellow);
+  
+  --scanline-color: var(--color-scanline-color);
+  --panel-bg: var(--color-panel-bg);
+  --panel-bg-dense: var(--color-panel-bg-dense);
+  --panel-bg-logs: var(--color-panel-bg-logs);
+  --panel-bg-results: var(--color-panel-bg-results);
+  --dropzone-bg: var(--color-dropzone-bg);
+  --hologram-bg: var(--color-hologram-bg);
+  --banner-warning-bg: var(--color-banner-warning-bg);
+  --banner-error-bg: var(--color-banner-error-bg);
+  --banner-error-border: var(--color-banner-error-border);
+  --protocol-card-bg: var(--color-protocol-card-bg);
+  --protocol-card-bg-hover: var(--color-protocol-card-bg-hover);
+  --protocol-card-border: var(--color-protocol-card-border);
+  --protocol-card-border-hover: var(--color-protocol-card-border-hover);
+
+  --terminal-font: var(--font-terminal);
+  --display-font: var(--font-display);
+
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+  --border-style: solid;
+  --border-cyan-dim: rgba(80, 227, 194, 0.2);
+  --border-cyan-very-dim: rgba(80, 227, 194, 0.1);
+
+  --border-radius-panel: var(--radius-panel);
+  --border-radius-hologram: var(--radius-hologram);
+  --border-radius-image: var(--radius-image);
+  --border-radius-banner: var(--radius-banner);
+
+  --glow-cyan: var(--shadow-glow-cyan);
+  --glow-cyan-strong: var(--shadow-glow-cyan-strong);
+
+  --tilt-base-transform: translateZ(20px);
+  --tilt-hover-transform: translateZ(50px) rotateX(2deg) rotateY(-2deg);
+  --tilt-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(80, 227, 194, 0.15);
+}

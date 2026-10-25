@@ -1,0 +1,12 @@
+services:
+  ai-image-detector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-image-detector
+    ports:
+      - "8000:8000"
+    environment:
+      - ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000,http://localhost:5173,http://localhost:3000
+      - MAX_FILE_SIZE_MB=10
+    restart: unless-stopped
