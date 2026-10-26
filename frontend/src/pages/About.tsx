@@ -1,6 +1,58 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
+interface TeamNode {
+  name: string;
+  role: string;
+  tag: string;
+  links: {
+    label: string;
+    url: string;
+  }[];
+}
+
+const teamNodes: TeamNode[] = [
+  {
+    name: 'Shreyans Jain',
+    role: 'LEAD_ARCHITECTURE',
+    tag: 'NODE_01',
+    links: [
+      { label: 'GITHUB', url: 'https://github.com/shreyansdev' },
+      { label: 'LINKEDIN', url: 'https://linkedin.com/in/shreyansdev' },
+      { label: 'X_TWITTER', url: 'https://x.com/shreyansdev' },
+    ],
+  },
+  {
+    name: 'Sakib I Sanadi',
+    role: 'CORE_ENGINEERING',
+    tag: 'NODE_02',
+    links: [
+      { label: 'GITHUB', url: 'https://github.com/Sakib200413' },
+      { label: 'LINKEDIN', url: 'https://www.linkedin.com/in/sakib-sanadi-76248b382/' },
+      { label: 'X_TWITTER', url: 'https://x.com/SakibSanad56351' },
+    ],
+  },
+  {
+    name: 'Kushal G Jain',
+    role: 'CORE_ENGINEERING',
+    tag: 'NODE_03',
+    links: [
+      { label: 'GITHUB', url: 'https://github.com/Kushalgjain2005' },
+      { label: 'LINKEDIN', url: 'https://www.linkedin.com/in/kushal-g-jain-073939365/' },
+    ],
+  },
+  {
+    name: 'Shagun Kumari',
+    role: 'CORE_ENGINEERING',
+    tag: 'NODE_04',
+    links: [
+      { label: 'GITHUB', url: 'https://github.com/Shagunkumari07' },
+      { label: 'LINKEDIN', url: 'https://www.linkedin.com/in/shagun-kumari-0574632b4' },
+      { label: 'X_TWITTER', url: 'https://x.com/shagun9142' },
+    ],
+  },
+];
+
 export const AboutPage: React.FC = () => {
   return (
     <div style={{ padding: '20px 0', flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
@@ -156,71 +208,118 @@ export const AboutPage: React.FC = () => {
       >
         <div className="panel-header">COMMUNICATION_LINK_NODES</div>
         <p style={{ lineHeight: '1.6', fontSize: '0.9rem', marginBottom: '20px', color: 'var(--text-grey)', fontFamily: 'var(--terminal-font)' }}>
-          To view source files or establish contact coordinates, follow these nodes:
+          To view source files or establish contact coordinates with the engineering team, follow these verified nodes:
         </p>
-        <ul style={{ listStyleType: 'none', padding: 0, fontFamily: 'var(--terminal-font)', fontSize: '0.85rem' }}>
-          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
-            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
-            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>DEVELOPER:</span>
-            <strong style={{ color: 'var(--text-white)' }}>Shreyans Jain</strong>
-          </li>
-          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
-            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
-            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>GITHUB:</span>
-            <a 
-              href="https://github.com/shreyansdev" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
-              onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
-              onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
+
+        {/* REPOSITORY NODE */}
+        <div 
+          style={{ 
+            marginBottom: '24px', 
+            padding: '14px 18px', 
+            background: 'rgba(80, 227, 194, 0.03)', 
+            border: '1px solid rgba(80, 227, 194, 0.2)', 
+            borderRadius: 'var(--border-radius-hologram)', 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            gap: '12px',
+            fontFamily: 'var(--terminal-font)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px', fontSize: '0.85rem' }}>
+            <span style={{ color: 'var(--primary-cyan)', fontWeight: 'bold' }}>[+] REPO_SOURCE:</span>
+            <span style={{ color: 'var(--text-white)' }}>shreyansdev/ai-image-detector</span>
+          </div>
+          <a 
+            href="https://github.com/shreyansdev/ai-image-detector" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            style={{ 
+              color: 'var(--primary-cyan)', 
+              textDecoration: 'none', 
+              fontSize: '0.8rem',
+              letterSpacing: '0.5px'
+            }}
+            onMouseOver={e => e.currentTarget.style.textShadow = '0 0 8px var(--primary-cyan)'}
+            onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
+          >
+            [ACCESS_REPOSITORY &rarr;]
+          </a>
+        </div>
+
+        {/* TEAM NODES GRID */}
+        <div 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
+            gap: '16px',
+            fontFamily: 'var(--terminal-font)'
+          }}
+        >
+          {teamNodes.map((member) => (
+            <div 
+              key={member.name}
+              style={{ 
+                background: 'rgba(0, 0, 0, 0.45)', 
+                border: '1px solid rgba(80, 227, 194, 0.15)', 
+                borderRadius: 'var(--border-radius-hologram)', 
+                padding: '16px', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '12px',
+                transition: 'border-color 0.2s ease, box-shadow 0.2s ease'
+              }}
+              onMouseOver={e => {
+                e.currentTarget.style.borderColor = 'var(--primary-cyan)';
+                e.currentTarget.style.boxShadow = '0 0 12px rgba(80, 227, 194, 0.15)';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.borderColor = 'rgba(80, 227, 194, 0.15)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
             >
-              https://github.com/shreyansdev
-            </a>
-          </li>
-          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
-            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
-            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>REPOSITORY:</span>
-            <a 
-              href="https://github.com/shreyansdev/ai-image-detector" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
-              onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
-              onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
-            >
-              https://github.com/shreyansdev/ai-image-detector
-            </a>
-          </li>
-          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
-            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
-            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>LINKEDIN:</span>
-            <a 
-              href="https://linkedin.com/in/shreyansdev" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
-              onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
-              onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
-            >
-              https://linkedin.com/in/shreyansdev
-            </a>
-          </li>
-          <li style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '10px' }}>
-            <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>[+]</span>
-            <span style={{ color: 'var(--text-grey)', flexShrink: 0 }}>X_TWITTER:</span>
-            <a 
-              href="https://x.com/shreyansdev" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              style={{ color: 'var(--primary-cyan)', textDecoration: 'none', wordBreak: 'break-all' }}
-              onMouseOver={e => e.currentTarget.style.textShadow = '0 0 5px var(--primary-cyan)'}
-              onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
-            >
-              https://x.com/shreyansdev
-            </a>
-          </li>
-        </ul>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(80, 227, 194, 0.1)', paddingBottom: '8px' }}>
+                <span style={{ fontSize: '0.7rem', color: 'var(--primary-cyan)', letterSpacing: '0.5px' }}>
+                  [{member.tag} // {member.role}]
+                </span>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--primary-cyan)', boxShadow: '0 0 6px var(--primary-cyan)' }} />
+              </div>
+
+              <div>
+                <strong style={{ color: 'var(--text-white)', fontSize: '0.95rem', letterSpacing: '0.5px' }}>
+                  {member.name}
+                </strong>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: 'auto', paddingTop: '6px' }}>
+                {member.links.map(link => (
+                  <div key={link.label} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem' }}>
+                    <span style={{ color: 'var(--primary-cyan)', flexShrink: 0 }}>&gt;</span>
+                    <span style={{ color: 'var(--text-grey)', minWidth: '76px', flexShrink: 0 }}>{link.label}:</span>
+                    <a 
+                      href={link.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      style={{ 
+                        color: 'var(--primary-cyan)', 
+                        textDecoration: 'none', 
+                        overflow: 'hidden', 
+                        textOverflow: 'ellipsis', 
+                        whiteSpace: 'nowrap'
+                      }}
+                      title={link.url}
+                      onMouseOver={e => e.currentTarget.style.textShadow = '0 0 6px var(--primary-cyan)'}
+                      onMouseOut={e => e.currentTarget.style.textShadow = 'none'}
+                    >
+                      {link.url.replace(/^https?:\/\/(www\.)?/, '')}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
     </div>
