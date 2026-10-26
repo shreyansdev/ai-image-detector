@@ -215,8 +215,6 @@ button:focus-visible {
 
 .app-layout-container {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
   min-height: 100vh;
   padding: var(--spacing-container);
   position: relative;
@@ -256,10 +254,10 @@ html::after {
 
 .grid-layout {
   display: grid;
-  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) minmax(220px, 280px);
+  grid-template-columns: minmax(250px, 300px) minmax(0, 1fr) minmax(250px, 300px);
   gap: var(--spacing-grid-gap);
   flex-grow: 1;
-  align-items: start;
+  align-items: center;
   width: 100%;
 }
 
@@ -538,6 +536,7 @@ html {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     width: 100%;
+    align-items: start;
   }
 
   .detector-main {
